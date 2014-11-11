@@ -14,7 +14,6 @@ angular.module('ShoppingPal.controllers', [])
 
         .controller('ShoppingsCtrl', function ($scope, ShoppingService) {
             $scope.shopping_list = ShoppingService.all();
-            alert($scope.shopping_list.length);
         })
 
         .directive('shoppingCard', function () {

@@ -1,26 +1,52 @@
 angular.module('ShoppingPal.services', [])
 
-/**
- * A simple example service that returns some data.
- */
-.factory('Friends', function() {
-  // Might use a resource here that returns a JSON array
+        .factory('ItemService', function () {
+            var items = [
+                {id: 0, title: 'Scruff McGruff'},
+                {id: 1, title: 'G.I. Joe'},
+                {id: 2, title: 'Miss Frizzle'},
+                {id: 3, title: 'Ash Ketchum'}
+            ];
 
-  // Some fake testing data
-  var friends = [
-    { id: 0, name: 'Scruff McGruff' },
-    { id: 1, name: 'G.I. Joe' },
-    { id: 2, name: 'Miss Frizzle' },
-    { id: 3, name: 'Ash Ketchum' }
-  ];
+            return {
+                all: function () {
+                    return items;
+                },
+                get: function (itemId) {
+                    return items[itemId];
+                }
+            }
+        })
 
-  return {
-    all: function() {
-      return friends;
-    },
-    get: function(friendId) {
-      // Simple index lookup
-      return friends[friendId];
-    }
-  }
-});
+        .factory('WishService', function () {
+            var wishes = [
+                {id: 0, title: 'book'},
+                {id: 1, title: 'food'}
+            ];
+            
+            return {
+                all: function () {
+                    return wishes;
+                },
+                get: function (wishId) {
+                    return wishes[wishId];
+                }
+            }
+        })
+
+        .factory('ShoppingService', function () {
+            var shoppings = [
+                {id: 0, title: 'book', brand: 'BWS', date: '2014-09-18', amount: 34, location: '(123,124)', receipt: 'ionic.png'},
+                {id: 1, title: 'food', brand: 'Coles', date: '2014-11-09', amount: 65, location: '(123,124)', receipt: 'ionic.png'}
+            ];
+            
+            return {
+                all: function () {
+                    return shoppings;
+                },
+                get: function (shoppingId) {
+                    return shoppings[shoppingId];
+                }
+            }
+        })
+        ;

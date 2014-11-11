@@ -1,15 +1,29 @@
 angular.module('ShoppingPal.controllers', [])
 
-.controller('DashCtrl', function($scope) {
-})
+        .controller('WishesCtrl', function ($scope, WishService) {
+            $scope.wish_list = WishService.all();
+        })
 
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
-})
+        .controller('ItemsCtrl', function ($scope, ItemService) {
+            $scope.item_list = ItemService.all();
+        })
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
-})
+        .controller('ItemDetailCtrl', function ($scope, $stateParams, ItemService) {
+            $scope.item = ItemService.get($stateParams.itemId);
+        })
 
-.controller('AccountCtrl', function($scope) {
-});
+        .controller('ShoppingsCtrl', function ($scope, ShoppingService) {
+            $scope.shopping_list = ShoppingService.all();
+        })
+
+        .directive('shoppingCard', function () {
+            return {
+                restrict: "E",
+                templateUrl: "templates/shopping-card.html",
+                controller: function () {
+
+                },
+                controllerAs: "SCardCtrl"
+            };
+        })
+        ;
