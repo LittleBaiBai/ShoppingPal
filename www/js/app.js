@@ -38,47 +38,47 @@ angular.module('ShoppingPal', ['ionic', 'ShoppingPal.controllers', 'ShoppingPal.
 
     // Each tab has its own nav history stack:
 
-    .state('tab.dash', {
-      url: '/dash',
+    .state('tab.wishes', {
+      url: '/wishes',
       views: {
-        'tab-dash': {
-          templateUrl: 'templates/tab-dash.html',
-          controller: 'DashCtrl'
+        'tab-wishes': {
+          templateUrl: 'templates/tab-wishes.html',
+          controller: 'WishesCtrl'
         }
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.Items', {
+      url: '/items',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
+        'tab-items': {
+          templateUrl: 'templates/tab-items.html',
+          controller: 'ItemsCtrl'
         }
       }
     })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
+    .state('tab.item-detail', {
+      url: '/items/:itemId',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
+        'tab-items': {
+          templateUrl: 'templates/item-detail.html',
+          controller: 'ItemDetailCtrl'
         }
       }
     })
 
-    .state('tab.account', {
-      url: '/account',
+    .state('tab.shoppings', {
+      url: '/shoppings',
       views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-account.html',
-          controller: 'AccountCtrl'
+        'tab-shoppings': {
+          templateUrl: 'templates/tab-shoppings.html',
+          controller: 'ShoppingsCtrl'
         }
       }
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/wishes');
 
 });
 
