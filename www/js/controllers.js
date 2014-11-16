@@ -15,16 +15,18 @@ angular.module('ShoppingPal.controllers', [])
 
             $scope.deleteWishes = function (wish) {
                 for (wish in $scope.wish_list) {
-                    WishService.delete($scope.wishes_list.indexOf(wish));
-                    $scope.wishes_list.splice($scope.wishes_list.indexOf(wish), 1);
+                    if (wish.checked) {
+                        WishService.delete($scope.wishes_list.indexOf(wish));
+                        $scope.wishes_list.splice($scope.wishes_list.indexOf(wish), 1);
+                    }
                     //$scope.$apply();
                 }
             };
 
             $scope.goAddWish = function () {
                 var wish = {};
-                wish.title = prompt("Please enter new wish", "Title");
-                wish.id = $scope.wish_list[$scope.wish_list.length - 1].id + 1;
+                wish.title = prompt("Please enter new wish", "");
+                wish.id = WishService.getIndex();
                 WishService.add(wish);
                 $scope.wish_list = WishService.all();
                 //$scope.$apply();
@@ -46,24 +48,33 @@ angular.module('ShoppingPal.controllers', [])
             };
         })
 
-        .controller('AddShoppingCtrl', function ($scope, $state, $ionicActionSheet, $ionicViewService, $ionicLoading, WishService, ShoppingService, Camera) {
+        .controller('AddShoppingCtrl', function ($scope, $state, $ionicActionSheet, $ionicViewService, $ionicLoading, WishService, ShoppingService, ItemService, Camera) {
             //$scope.currentLocation = '(Locating...)';
             $scope.data = [];
             $scope.wish_list = WishService.all();
 
             $scope.saveShopping = function () {
                 $ionicLoading.show({
-                    template: 'Creating Client...'
+                    template: 'Saving...'
                 });
-                Camera.convertImgToBase64($scope.data, $scope.data.receipt, function (processedClient, base64Img) {
-                    processedClient.receipt = base64Img;
-                    ShoppingService.add(processedClient);
-                    $ionicLoading.hide();
-                    var backView = $ionicViewService.getBackView();
-                    backView && backView.go();
-                });
-                //ShoppingService.add($scope.data);
-
+                $scope.data.id = ShoppingService.getIndex();
+                for (wish in $scope.wish_list) {
+                    if (wish.checked === true) {
+                        $scope.data.items.push(wish.title);
+                        WishService.del($scope.wishes_list.indexOf(wish));
+                    }
+                }
+//                Camera.convertImgToBase64($scope.data, $scope.data.receipt, function (processedShopping, base64Img) {
+//                    processedShopping.receipt = base64Img;
+//                    ShoppingService.add(processedShopping);
+//                    $ionicLoading.hide();
+//                    var backView = $ionicViewService.getBackView();
+//                    backView && backView.go();
+//                });
+                ShoppingService.add($scope.data);
+                $ionicLoading.hide();
+                var backView = $ionicViewService.getBackView();
+                backView && backView.go();
             };
 
             $scope.getGeoLocation = function () {
@@ -120,7 +131,7 @@ angular.module('ShoppingPal.controllers', [])
                             Camera.getPicture().then(function (imagePath) {
                                 console.log("in taking photo - imagePath = " + imagePath);
                                 $scope.picPath = imagePath;
-                                $scope.$apply();
+                                //$scope.$apply();
                                 $scope.data.receipt = $scope.picPath;
                             }, function (err) {
                                 alert(err);
@@ -131,7 +142,7 @@ angular.module('ShoppingPal.controllers', [])
                             Camera.getFromAlbum().then(function (imagePath) {
                                 console.log("in get from album - imagePath = " + imagePath);
                                 $scope.picPath = imagePath;
-                                $scope.$apply();
+                                //$scope.$apply();
 
                                 $scope.data.receipt = $scope.picPath;
                                 //alert($scope.client.profile_pic);

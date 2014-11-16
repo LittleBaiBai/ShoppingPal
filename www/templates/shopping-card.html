@@ -27,9 +27,12 @@
         <img class="receipt_img" ng-src="shopping.receipt">
     </div>
 
-    <a class="item item-icon-left assertive" href="#">
+    <div class="item item-icon-left assertive">
         <i class="icon ion-ios7-paper"></i>
         Detail List
-    </a>
+        <ion-list>
+            <ion-item ng-repeat="item in shopping.items">{{item}}</ion-item>
+        </ion-list>
+    </div>
 
 </div>

@@ -33,7 +33,12 @@ angular.module('ShoppingPal', ['ionic', 'ShoppingPal.controllers', 'ShoppingPal.
                     .state('tab', {
                         url: "/tab",
                         abstract: true,
-                        templateUrl: "templates/tabs.html"
+                        templateUrl: "templates/tabs.html",
+                        onEnter: function(WishService, ShoppingService, ItemService) {
+                            WishService.init();
+                            ShoppingService.init();
+                            ItemService.init();
+                        }
                     })
 
                     // Each tab has its own nav history stack:
