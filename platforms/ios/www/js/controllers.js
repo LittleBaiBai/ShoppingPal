@@ -13,11 +13,11 @@ angular.module('ShoppingPal.controllers', [])
 //                $scope.wish_list.splice(toIndex, 0, wish);
 //            };
 
-            $scope.deleteWishes = function (wish) {
-                for (wish in $scope.wish_list) {
-                    if (wish.checked) {
-                        WishService.delete($scope.wishes_list.indexOf(wish));
-                        $scope.wishes_list.splice($scope.wishes_list.indexOf(wish), 1);
+            $scope.deleteWishes = function () {
+                for (var key in $scope.wish_list) {
+                    if ($scope.wish_list[key].checked) {
+                        WishService.del(key);
+                        //$scope.wish_list.splice(key, 1);
                     }
                     //$scope.$apply();
                 }
@@ -46,6 +46,9 @@ angular.module('ShoppingPal.controllers', [])
             $scope.goAddShopping = function () {
                 $state.go("tab.addShopping");
             };
+            $scope.deleteShopping = function () {
+                
+            };
         })
 
         .controller('AddShoppingCtrl', function ($scope, $state, $ionicActionSheet, $ionicViewService, $ionicLoading, WishService, ShoppingService, ItemService, Camera) {
@@ -58,12 +61,14 @@ angular.module('ShoppingPal.controllers', [])
                     template: 'Saving...'
                 });
                 $scope.data.id = ShoppingService.getIndex();
-                for (wish in $scope.wish_list) {
-                    if (wish.checked === true) {
-                        $scope.data.items.push(wish.title);
-                        WishService.del($scope.wishes_list.indexOf(wish));
+                var items = "";
+                for (key in $scope.wish_list) {
+                    if ($scope.wish_list[key].checked === true) {
+                        items += $scope.wish_list[key].title + "  ";
+                        WishService.del(key);
                     }
                 }
+                $scope.data.items = items;
 //                Camera.convertImgToBase64($scope.data, $scope.data.receipt, function (processedShopping, base64Img) {
 //                    processedShopping.receipt = base64Img;
 //                    ShoppingService.add(processedShopping);

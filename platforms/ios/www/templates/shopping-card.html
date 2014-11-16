@@ -3,7 +3,7 @@
     <div class="item item-avatar">
         <img class="brand_logo" ng-if="shopping.brand == 'BWS'" src="img/logo_bws.jpeg">
         <img class="brand_logo" ng-if="shopping.brand == 'Coles'" src="img/logo_coles.jpeg">
-        <img class="brand_logo" ng-if="shopping.brand == 'DavidJoins'" src="img/logo_davidjones.jpeg">
+        <img class="brand_logo" ng-if="shopping.brand == 'DavidJones'" src="img/logo_davidjones.jpeg">
         <img class="brand_logo" ng-if="shopping.brand == 'Drakes'" src="img/logo_drakes.jpeg">
         <img class="brand_logo" ng-if="shopping.brand == 'IGA'" src="img/logo_iga.jpeg">
         <img class="brand_logo" ng-if="shopping.brand == 'Liquor'" src="img/logo_liquor.jpeg">
@@ -24,15 +24,13 @@
     </div>
 
     <div class="item item-image">
-        <img class="receipt_img" ng-src="shopping.receipt">
+        <img class="receipt_img" ng-src="{{shopping.receipt}}">
     </div>
 
     <div class="item item-icon-left assertive">
         <i class="icon ion-ios7-paper"></i>
         Detail List
-        <ion-list>
-            <ion-item ng-repeat="item in shopping.items">{{item}}</ion-item>
-        </ion-list>
+        <textarea readonly="readonly">{{shopping.items}}</textarea>
     </div>
 
 </div>

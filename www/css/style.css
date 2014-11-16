@@ -10,11 +10,16 @@
 }
 
 .shopping_amount {
-    font-size: 50px;
+    font-size: 40px;
     text-align: right;
+    text-decoration-style: dotted;
 }
 
 .ReceiptPic {
     height: 256px;
     width: 256px;
+}
+
+.input-right {
+    text-align: right;
 }

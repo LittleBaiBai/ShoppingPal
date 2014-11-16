@@ -72,8 +72,6 @@ angular.module('ShoppingPal.services', [])
             var index = 0;
             return {
                 init: function () {
-                    window.localStorage['savedShoppings'] = [];
-                    window.localStorage['shoppingIndex'] = 0;
                     shoppings = JSON.parse(window.localStorage['savedShoppings'] || '[]');
                     index = window.localStorage['shoppingIndex'] || 0;
                 },
@@ -86,7 +84,7 @@ angular.module('ShoppingPal.services', [])
                     return shoppings[shoppingId];
                 },
                 add: function (obj) {
-                    shoppings(0, 0, obj);
+                    shoppings.splice(0, 0, obj);
                     index++;
                     window.localStorage['savedShoppings'] = JSON.stringify(shoppings);
                     window.localStorage['shoppingIndex'] = index;

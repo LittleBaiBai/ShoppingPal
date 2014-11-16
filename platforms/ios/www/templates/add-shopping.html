@@ -4,16 +4,12 @@
     </ion-nav-buttons>
     <ion-content>
         <div class="list list-inset">
-            <label class="item item-input">
-                <span class="input-label">Title</span>
-                <input type="text" id="title" ng-model="data.title">
-            </label>
             <label class="item item-input item-select item-select">
                 <span class="input-label">Location</span>
                 <select class="chooseBrand" ng-model="data.brand">
                     <option value="BWS">BWS</option>
                     <option value="Coles">Coles</option>
-                    <option value="David Jones">David Jones</option>
+                    <option value="DavidJones">David Jones</option>
                     <option value="Drakes">Drakes</option>
                     <option value="IGA">IGA</option>
                     <option value="Liquor">Liquor</option>
@@ -29,15 +25,15 @@
             </label>
             <label class="item item-input">
                 <span class="input-label">Amount</span>
-                <input type="number" ng-model="data.amount">
+                <input class="input-right" type="number" ng-model="data.amount">
             </label>
             <label class="item item-input">
                 <span class="input-label">Date</span>
-                <input type="date" ng-model="data.date">
+                <input class="input-right" type="date" ng-model="data.date">
             </label>
             <label class="item item-input">
                 <span class="input-label">Time</span>
-                <input type="time" ng-model="data.time">
+                <input class="input-right" type="time" ng-model="data.time">
             </label>
             <div class="padding">
                 <button ng-click="pickReceiptPic()" class="button button-block button-positive">Add Receipt Picture</button>
