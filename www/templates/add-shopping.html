@@ -1,0 +1,56 @@
+<ion-view title="Add Shopping" ng-init="getGeoLocation()">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-positive form_submit" ng-click="saveShopping()" ng-disabled="formDisabled">Save</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <span class="input-label">Title</span>
+                <input type="text" id="title" ng-model="data.title">
+            </label>
+            <label class="item item-input item-select item-select">
+                <span class="input-label">Location</span>
+                <select class="chooseBrand" ng-model="data.brand">
+                    <option value="BWS">BWS</option>
+                    <option value="Coles">Coles</option>
+                    <option value="David Jones">David Jones</option>
+                    <option value="Drakes">Drakes</option>
+                    <option value="IGA">IGA</option>
+                    <option value="Liquor">Liquor</option>
+                    <option value="Myer">Myer</option>
+                    <option value="WoolWorths">WoolWorths</option>
+                    <option value="Mall">Mall</option>
+                    <option value="Market">Market</option>
+                    <option value="Others">Others</option>
+                </select>
+            </label>
+            <label class="item item-icon-left ion-location">
+                <span class="geolocation">{{currentLocation}}</span>
+            </label>
+            <div class="padding">
+                <button ng-click="pickReceiptPic()" class="button button-block button-positive">Add Receipt Picture</button>
+            </div>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Receipt Pic</span>
+                <input type="hidden" ng-model="data.receipt" placeholder="Receipt Picture" />
+                <img ng-src="{{picPath}}" class="ReceiptPic"/>
+            </label> 
+            <div class="padding">
+                <span class="chooseWish"> Finished wishes </span>
+                <ul class="list">
+                    <div ng-repeat="wish in wish_list">
+                        <li class="item item-checkbox">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                            {{wish.title}}
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <label class="item item-input">
+                <textarea type="text" ng-model="date.description" placeholder="Description" rows="5"></textarea>
+            </label>
+        </div>
+    </ion-content>
+</ion-view>

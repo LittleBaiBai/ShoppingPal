@@ -1,1 +1,20 @@
 /* Empty. Add your own CSS if you like */
+.brand_logo {
+    height: 100px;
+    width: 100px;
+}
+
+.receipt_img {
+    height: 300px;
+    width: 300px;
+}
+
+.shopping_amount {
+    font-size: 50px;
+    text-align: right;
+}
+
+.ReceiptPic {
+    height: 256px;
+    width: 256px;
+}

@@ -12,8 +12,51 @@ angular.module('ShoppingPal.controllers', [])
             $scope.item = ItemService.get($stateParams.itemId);
         })
 
-        .controller('ShoppingsCtrl', function ($scope, ShoppingService) {
+        .controller('ShoppingsCtrl', function ($scope, $state, ShoppingService) {
             $scope.shopping_list = ShoppingService.all();
+            $scope.goAddShopping = function () {
+                $state.go("tab.addShopping");
+            };
+        })
+
+        .controller('AddShoppingCtrl', function ($scope, $state, WishService, ShoppingService) {
+            $scope.currentLocation = '(Locating...)';
+            $scope.data = [];
+            $scope.wish_list = WishService.all();
+            $scope.getGeoLocation = function () {
+                navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            }
+            
+            var onSuccess = function (position) {
+                var currentLocation =
+                        'Latitude: ' + position.coords.latitude + '\n' +
+                        'Longitude: ' + position.coords.longitude + '\n' +
+                        'Altitude: ' + position.coords.altitude + '\n';
+
+                var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                console.log("currentLocation = " + currentLocation);
+                $scope.location = currentLocation;
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({'latLng': currentLocation}, function (results, status) {
+                    if (status === 'OK') {
+                        console.log("in OK");
+                        $scope.currentLocation = "You are in " + results[0].formatted_address;
+                        console.log("currentLocation = " + $scope.currentLocation);
+                    }
+                    else {
+                        $scope.currentLocation = "Not Found!";
+                        $scope.location = "No location information";
+                        alert("Something wrong with your location");
+                        console.log("status: " + status);
+                    }
+                });
+            };
+            function onError(error) {
+                $scope.location = "No location information";
+                alert('Please enable your geolocation service to keep track of your shopping location!');
+                console.log('message: ' + error.message + '\n');
+            }
+
         })
 
         .directive('shoppingCard', function () {

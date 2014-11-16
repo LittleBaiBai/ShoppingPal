@@ -46,6 +46,7 @@
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/img/logo_drakes.jpeg \
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/img/logo_iga.jpeg \
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/img/logo_liquor.jpeg \
+/Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/img/logo_mall.jpeg \
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/img/logo_market.jpeg \
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/img/logo_myer.jpeg \
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/img/logo_others.jpeg \
@@ -88,6 +89,7 @@
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraConstants.js \
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js \
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js \
+/Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/templates/add-shopping.html \
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/templates/item-detail.html \
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/templates/shopping-card.html \
 /Users/bai/Documents/NetBeansProjects/ShoppingPal/platforms/android/assets/www/templates/tab-items.html \
