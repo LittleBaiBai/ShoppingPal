@@ -1,10 +1,10 @@
 <ion-view title="Wish List">
     <ion-nav-buttons side="right">
         <ion-nav-buttons side="left">
-            <button class="button button-icon ion-ios7-minus-outline" ng-click="deleteWishes()"></button>
+            <button class="button button-icon ion-ios7-minus" ng-click="deleteWishes()"></button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right">
-            <button class="button button-icon ion-ios7-plus-outline" ng-click="goAddWish()"></button>
+            <button class="button button-icon ion-ios7-plus" ng-click="goAddWish()"></button>
         </ion-nav-buttons>
     </ion-nav-buttons>
 
@@ -12,8 +12,7 @@
         <ion-list>
             <!--ion-list show-delete="data.showDelete"-->
             <ion-checkbox ng-repeat="wish in wish_list track by $index" 
-                          ng-model="wish.checked" 
-                          ng-checked="wish.checked">
+                          ng-model="wish.checked" ng-checked="wish.checked" class="checkbox-assertive">
                 {{wish.title}}
                 <!--ion-option-button class="ion-minus-circled right"  ng-click="onItemDelete(wish)">
                 </ion-option-button>

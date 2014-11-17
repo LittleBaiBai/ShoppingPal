@@ -1,4 +1,4 @@
-<div class="list-inset">
+<div class="list-inset" style="margin-top: 0;">
 
     <div class="item item-avatar">
         <img class="brand_logo" ng-if="shopping.brand == 'BWS'" src="img/logo_bws.jpeg">
@@ -15,6 +15,7 @@
         <div class = "row">
             <div class = "col-66">
                 <h2>{{shopping.date}}</h2>
+                <h3>{{shopping.time}}</h3>
                 <p>{{shopping.location}}</p>
             </div>
             <div class = "col-33">
@@ -28,9 +29,16 @@
     </div>
 
     <div class="item item-icon-left assertive">
+        <!--ion-item class="button button-right button-assertive" href="#/tab/shopping/{{shopping.id}}">Edit</ion-item-->
         <i class="icon ion-ios7-paper"></i>
         Detail List
-        <textarea readonly="readonly">{{shopping.items}}</textarea>
+        <!--textarea readonly="readonly"  href="#/tab/shopping/{{shopping.id}}" >{{shopping.items}}</textarea-->
+        <div class="listed_item" ng-repeat="item in shopping.items">{{item}}</div>
     </div>
+
+    <button class="button button-full button-assertive" ng-click="deleteShopping(shopping)">
+        Delete this shopping history!
+    </button>
+
 
 </div>

@@ -81,6 +81,15 @@ angular.module('ShoppingPal', ['ionic', 'ShoppingPal.controllers', 'ShoppingPal.
                             }
                         }
                     })
+//                    .state('tab.shopping-detail', {
+//                        url: '/shoppings/:shoppingId',
+//                        views: {
+//                            'tab-shoppings': {
+//                                templateUrl: 'templates/shopping-detail.html',
+//                                controller: 'ShoppingDetailCtrl'
+//                            }
+//                        }
+//                    })
 
                     .state('tab.addShopping', {
                         url: '/shoppings/addShopping',

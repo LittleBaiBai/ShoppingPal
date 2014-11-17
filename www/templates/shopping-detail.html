@@ -1,6 +1,6 @@
-<ion-view title="Add Shopping" ng-init="getGeoLocation()">
+<ion-view title="{{shopping.title}}">
     <ion-nav-buttons side="right">
-        <button class="button button-light button-assertive form_submit" ng-click="saveShopping()" ng-disabled="formDisabled">Save</button>
+        <button class="button button-light button-positive form_submit" ng-click="" ng-disabled="formDisabled">Save</button>
     </ion-nav-buttons>
     <ion-content>
         <div class="list list-inset">
@@ -36,21 +36,22 @@
                 <input class="input-right" type="time" ng-model="data.time">
             </label>
             <div class="padding">
-                <button ng-click="pickReceiptPic()" class="button button-block button-assertive">Add Receipt Picture</button>
+                <button ng-click="pickReceiptPic()" class="button button-block button-positive">Add Receipt Picture</button>
             </div>
             <label class="item item-input item-floating-label">
                 <span class="input-label">Receipt Pic</span>
                 <input type="hidden" ng-model="data.receipt" placeholder="Receipt Picture" />
-                <img ng-src="{{picPath}}" class="receipt_img"/>
+                <img ng-src="{{picPath}}" class="ReceiptPic"/>
             </label> 
             <div class="padding">
                 <span class="chooseWish"> Finished wishes </span>
                 <ion-list>
-                <ion-checkbox ng-repeat="wish in wish_list track by $index" 
-                              ng-model="wish.checked" ng-checked="wish.checked" class="checkbox-assertive">
-                    {{wish.title}}
-                </ion-checkbox>
-            </ion-list>
+                    <ion-checkbox ng-repeat="wish in wish_list track by $index" 
+                                  ng-model="wish.checked" 
+                                  ng-checked="wish.checked">
+                        {{wish.title}}
+                    </ion-checkbox>
+                </ion-list>
             </div>
             <!--label class="item item-input">
                 <textarea type="text" ng-model="data.description" placeholder="Description" rows="5"></textarea>

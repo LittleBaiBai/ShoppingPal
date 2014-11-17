@@ -72,6 +72,8 @@ angular.module('ShoppingPal.services', [])
             var index = 0;
             return {
                 init: function () {
+//                    window.localStorage['savedShoppings'] = [];
+//                    window.localStorage['shoppingIndex'] = 0;
                     shoppings = JSON.parse(window.localStorage['savedShoppings'] || '[]');
                     index = window.localStorage['shoppingIndex'] || 0;
                 },
@@ -84,13 +86,9 @@ angular.module('ShoppingPal.services', [])
                     return shoppings[shoppingId];
                 },
                 add: function (obj) {
-                    console.log("shopping added: " + shoppings);
                     shoppings.splice(0, 0, obj);
-                    console.log("shopping added: " + shoppings);
                     index++;
-                    console.log("shopping added: " + shoppings);
                     window.localStorage['savedShoppings'] = JSON.stringify(shoppings);
-                    console.log("shopping added: " + shoppings);
                     window.localStorage['shoppingIndex'] = index;
                     console.log("shopping added: " + shoppings);
                 },
@@ -127,10 +125,10 @@ angular.module('ShoppingPal.services', [])
                     var deferred = $q.defer();
                     var cameraOptions = {
                         quality: 80,
-                        destinationType: Camera.DestinationType.FILE_URI,
+                        destinationType: Camera.DestinationType.DATA_URL,
                         sourceType: Camera.PictureSourceType.CAMERA,
-                        targetWidth: 512,
-                        targetHeight: 512,
+                        targetWidth: 300,
+                        targetHeight: 300,
                         allowEdit: true,
                         encodingType: Camera.EncodingType.JPEG,
                         saveToPhotoAlbum: true};
@@ -154,10 +152,10 @@ angular.module('ShoppingPal.services', [])
                     var deferred = $q.defer();
                     var cameraOptions = {
                         quality: 80,
-                        destinationType: Camera.DestinationType.FILE_URI,
+                        destinationType: Camera.DestinationType.DATA_URL,
                         sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                        targetWidth: 512,
-                        targetHeight: 512,
+                        targetWidth: 300,
+                        targetHeight: 300,
                         allowEdit: true,
                         encodingType: Camera.EncodingType.JPEG,
                         saveToPhotoAlbum: false};
@@ -177,27 +175,27 @@ angular.module('ShoppingPal.services', [])
                     }
                     return deferred.promise;
                 };
-                var convertImgToBase64 = function (client, url, callback, outputFormat) {
-                    var canvas = document.createElement('CANVAS');
-                    var ctx = canvas.getContext('2d');
-                    var img = new Image;
-                    img.crossOrigin = 'Anonymous';
-                    img.onload = function () {
-                        canvas.height = img.height;
-                        canvas.width = img.width;
-                        ctx.drawImage(img, 0, 0);
-                        var dataURL = canvas.toDataURL(outputFormat || 'image/png');
-                        callback.call(this, client, dataURL);
-                        // Clean up
-                        canvas = null;
-                    };
-                    img.src = url;
-                };
+//                var convertImgToBase64 = function (client, url, callback, outputFormat) {
+//                    var canvas = document.createElement('CANVAS');
+//                    var ctx = canvas.getContext('2d');
+//                    var img = new Image;
+//                    img.crossOrigin = 'Anonymous';
+//                    img.onload = function () {
+//                        canvas.height = img.height;
+//                        canvas.width = img.width;
+//                        ctx.drawImage(img, 0, 0);
+//                        var dataURL = canvas.toDataURL(outputFormat || 'image/png');
+//                        callback.call(this, client, dataURL);
+//                        // Clean up
+//                        canvas = null;
+//                    };
+//                    img.src = url;
+//                };
                 return {
                     cleanUp: cleanUp,
                     getPicture: getPicture,
                     getFromAlbum: getFromAlbum,
-                    convertImgToBase64: convertImgToBase64
+//                    convertImgToBase64: convertImgToBase64
                 };
             }])
 

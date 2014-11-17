@@ -2,24 +2,27 @@
 .brand_logo {
     height: 100px;
     width: 100px;
+    margin-top: 8px;
 }
 
 .receipt_img {
-    height: 300px;
-    width: 300px;
+    height: 256px;
+    width: 256px;
 }
 
 .shopping_amount {
     font-size: 40px;
     text-align: right;
     text-decoration-style: dotted;
-}
-
-.ReceiptPic {
-    height: 256px;
-    width: 256px;
+    position: relative;
+    top: 8px;
+    display: block;
 }
 
 .input-right {
     text-align: right;
+}
+
+.listed_item {
+    color: black;
 }
